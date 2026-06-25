@@ -1,3 +1,10 @@
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import http from "http";
+
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { initRepo } from "./controllers/init.js";
@@ -8,6 +15,7 @@ import { pushRepo } from "./controllers/push.js";
 import { revertRepo } from "./controllers/revert.js";
 
 yargs(hideBin(process.argv))
+  .command("start", "Start the server", {}, startServer)
   .command("init", "initialize a new kod repository", {}, initRepo)
   .command(
     "add <file>",
@@ -52,3 +60,28 @@ yargs(hideBin(process.argv))
   )
   .demandCommand(1, "You need at least one command")
   .help().argv;
+
+async function startServer() {
+  dotenv.config();
+
+  const app = express();
+
+  const PORT = process.env.PORT || 3000;
+
+  app.use(cors());
+  app.use(bodyParser.json());
+  app.use(express.json());
+
+  const mongoURI = process.env.MONGO_URI;
+
+  await mongoose
+    .connect(mongoURI)
+    .then(() => {
+      console.log("Connected to MongoDB");
+    })
+    .catch((err) => {
+      console.log("Unable to connect to MongoDB", err);
+    });
+
+  console.log("Server logic called");
+}
