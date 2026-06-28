@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "Kodbase: GitHub Clone backend",
   "dependencies": {
+    "aws-sdk": "^2.1693.0",
     "body-parser": "^2.3.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",

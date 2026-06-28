@@ -14,6 +14,7 @@ import { commitRepo } from "./controllers/commit.js";
 import { pullRepo } from "./controllers/pull.js";
 import { pushRepo } from "./controllers/push.js";
 import { revertRepo } from "./controllers/revert.js";
+import mainRouter from "./routes/mainRouter.js";
 
 yargs(hideBin(process.argv))
   .command("start", "Start the server", {}, startServer)
@@ -72,9 +73,7 @@ function startServer() {
   app.use(bodyParser.json());
   app.use(express.json());
 
-  app.get("/", (req, res) => {
-    res.send("Welcome");
-  });
+  app.use("/", mainRouter);
 
   const server = http.createServer(app);
 
