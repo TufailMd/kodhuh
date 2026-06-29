@@ -1,0 +1,16 @@
+import express from "express";
+
+import repoController from "../controllers/repoController.js";
+
+const repoRouter = express.Router();
+
+repoRouter.get("/repo/all", repoController.getAllRepositories);
+repoRouter.post("/repo/create", repoController.createRepository);
+repoRouter.get("/repo/:id", repoController.fetchRepositoryById);
+repoRouter.get("/repo/:name", repoController.fetchRepositoryByName);
+repoRouter.get("/repo/:userId", repoController.fetchRepositoriesForCurrentUser);
+repoRouter.put("/repo/update/:id", repoController.updateRepositoryById);
+repoRouter.delete("/repo/delete/:id", repoController.deleteRepositoryById);
+repoRouter.patch("/repo/toggle/:id", repoController.toggleVisibilityById);
+
+export default repoRouter;

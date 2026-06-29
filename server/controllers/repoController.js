@@ -18,7 +18,6 @@ const fetchRepositoriesForCurrentUser = (req, res) => {
   res.send("Repositories for logged in user fetched");
 };
 
-// PUT — Update repo details (name, description, etc.)
 const updateRepositoryById = (req, res) => {
   res.send("Repository updated");
 };
@@ -38,6 +37,6 @@ export default {
   fetchRepositoryByName,
   fetchRepositoriesForCurrentUser,
   updateRepositoryById,
-  deleteRwepositoryById,
+  deleteRepositoryById,
   toggleVisibilityById,
 };
