@@ -1,20 +1,20 @@
-const createIssue = (res, res) => {
+const createIssue = (req, res) => {
   res.send("Issue created");
 };
 
-const getAllIssues = (res, res) => {
+const getAllIssues = (req, res) => {
   res.send("All issues fetched");
 };
 
-const fetchIssueById = (res, res) => {
+const fetchIssueById = (req, res) => {
   res.send("Issue details fetched");
 };
 
-const updateIssueById = (res, res) => {
+const updateIssueById = (req, res) => {
   res.send("Issue updated");
 };
 
-const deleteIssueById = (res, res) => {
+const deleteIssueById = (req, res) => {
   res.send("Issue deleted");
 };
 
