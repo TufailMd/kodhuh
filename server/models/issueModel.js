@@ -6,7 +6,7 @@ const IssueSchema = new Schema({
 
   status: { type: String, enum: ["open", "closed"], default: "open" },
   repository: {
-    type: Schema.types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Repository",
     required: true,
   },
